@@ -1,103 +1,96 @@
 import 'package:equatable/equatable.dart';
 
-// TODO: Переделать сущность
 class OpenWeatherEntity extends Equatable {
-  final double? lat;
-  final double? lon;
-  final String? timezone;
-  final int? timezoneOffset;
-  final OpenWeatherCurrentEntity? current;
-  final List<MinutelyEntity?>? minutely;
-  final List<HourlyEntity?>? hourly;
-  final List<DailyEntity?>? daily;
-  final List<AlertEntity?>? alerts;
+  final String cod;
+  final int message;
+  final int cnt;
+  final List<WeatherDataEntity> list;
+  final CityEntity city;
 
   const OpenWeatherEntity({
-    required this.lat,
-    required this.lon,
-    required this.timezone,
-    required this.timezoneOffset,
-    required this.current,
-    required this.minutely,
-    required this.hourly,
-    required this.daily,
-    required this.alerts,
+    required this.cod,
+    required this.message,
+    required this.cnt,
+    required this.list,
+    required this.city,
   });
 
   @override
-  List<Object?> get props => [
-        lat,
-        lon,
-        timezone,
-        timezoneOffset,
-        current,
-        minutely,
-        hourly,
-        daily,
-        alerts,
-      ];
+  List<Object> get props => [cod, message, cnt, list, city];
 }
 
-class OpenWeatherCurrentEntity extends Equatable {
-  final int? dt;
-  final int? sunrise;
-  final int? sunset;
-  final double? temp;
-  final double? feelsLike;
-  final int? pressure;
-  final int? humidity;
-  final double? dewPoint;
-  final double? uvi;
-  final int? clouds;
-  final int? visibility;
-  final double? windSpeed;
-  final int? windDeg;
-  final double? windGust;
-  final List<WeatherEntity?>? weather;
+class WeatherDataEntity extends Equatable {
+  final int dt;
+  final MainEntity main;
+  final List<WeatherEntity> weather;
+  final CloudsEntity clouds;
+  final WindEntity wind;
+  final int visibility;
+  final double pop;
+  final RainEntity? rain;
+  final SysEntity sys;
+  final String dtTxt;
 
-  const OpenWeatherCurrentEntity({
+  const WeatherDataEntity({
     required this.dt,
-    required this.sunrise,
-    required this.sunset,
-    required this.temp,
-    required this.feelsLike,
-    required this.pressure,
-    required this.humidity,
-    required this.dewPoint,
-    required this.uvi,
-    required this.clouds,
-    required this.visibility,
-    required this.windSpeed,
-    required this.windDeg,
-    required this.windGust,
+    required this.main,
     required this.weather,
+    required this.clouds,
+    required this.wind,
+    required this.visibility,
+    required this.pop,
+    this.rain,
+    required this.sys,
+    required this.dtTxt,
   });
 
   @override
-  List<Object?> get props => [
-        dt,
-        sunrise,
-        sunset,
+  List<Object?> get props =>
+      [dt, main, weather, clouds, wind, visibility, pop, rain, sys, dtTxt];
+}
+
+class MainEntity extends Equatable {
+  final double temp;
+  final double feelsLike;
+  final double tempMin;
+  final double tempMax;
+  final int pressure;
+  final int seaLevel;
+  final int grndLevel;
+  final int humidity;
+  final double tempKf;
+
+  const MainEntity({
+    required this.temp,
+    required this.feelsLike,
+    required this.tempMin,
+    required this.tempMax,
+    required this.pressure,
+    required this.seaLevel,
+    required this.grndLevel,
+    required this.humidity,
+    required this.tempKf,
+  });
+
+  @override
+  List<Object> get props => [
         temp,
         feelsLike,
+        tempMin,
+        tempMax,
         pressure,
+        seaLevel,
+        grndLevel,
         humidity,
-        dewPoint,
-        uvi,
-        clouds,
-        visibility,
-        windSpeed,
-        windDeg,
-        windGust,
-        weather,
+        tempKf
       ];
 }
 
 class WeatherEntity extends Equatable {
-  final int? id;
-  final String? main;
-  final String? description;
-  final String? icon;
+  final int id;
+  final String main;
+  final String description;
+  final String icon;
 
   const WeatherEntity({
     required this.id,
@@ -107,226 +100,86 @@ class WeatherEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        main,
-        description,
-        icon,
-      ];
+  List<Object> get props => [id, main, description, icon];
 }
 
-class MinutelyEntity extends Equatable {
-  final int? dt;
-  final int? precipitation;
+class CloudsEntity extends Equatable {
+  final int all;
 
-  const MinutelyEntity({
-    required this.dt,
-    required this.precipitation,
+  const CloudsEntity({required this.all});
+
+  @override
+  List<Object> get props => [all];
+}
+
+class WindEntity extends Equatable {
+  final double speed;
+  final int deg;
+  final double gust;
+
+  const WindEntity({
+    required this.speed,
+    required this.deg,
+    required this.gust,
   });
 
   @override
-  List<Object?> get props => [
-        dt,
-        precipitation,
-      ];
+  List<Object> get props => [speed, deg, gust];
 }
 
-class HourlyEntity extends Equatable {
-  final int? dt;
-  final double? temp;
-  final double? feelsLike;
-  final int? pressure;
-  final int? humidity;
-  final double? dewPoint;
-  final double? uvi;
-  final int? clouds;
-  final int? visibility;
-  final double? windSpeed;
-  final int? windDeg;
-  final double? windGust;
-  final List<WeatherEntity?>? weather;
-  final double? pop;
+class RainEntity extends Equatable {
+  final double h3;
 
-  const HourlyEntity({
-    required this.dt,
-    required this.temp,
-    required this.feelsLike,
-    required this.pressure,
-    required this.humidity,
-    required this.dewPoint,
-    required this.uvi,
-    required this.clouds,
-    required this.visibility,
-    required this.windSpeed,
-    required this.windDeg,
-    required this.windGust,
-    required this.weather,
-    required this.pop,
-  });
+  const RainEntity({required this.h3});
 
   @override
-  List<Object?> get props => [
-        dt,
-        temp,
-        feelsLike,
-        pressure,
-        humidity,
-        dewPoint,
-        uvi,
-        clouds,
-        visibility,
-        windSpeed,
-        windDeg,
-        windGust,
-        weather,
-        pop,
-      ];
+  List<Object> get props => [h3];
 }
 
-class DailyEntity extends Equatable {
-  final int? dt;
-  final int? sunrise;
-  final int? sunset;
-  final int? moonrise;
-  final int? moonset;
-  final double? moonPhase;
-  final String? summary;
-  final TempEntity? temp;
-  final FeelsLikeEntity? feelsLike;
-  final int? pressure;
-  final int? humidity;
-  final double? dewPoint;
-  final double? windSpeed;
-  final int? windDeg;
-  final double? windGust;
-  final List<WeatherEntity?>? weather;
-  final int? clouds;
-  final double? pop;
-  final double? rain;
-  final double? uvi;
+class SysEntity extends Equatable {
+  final String pod;
 
-  const DailyEntity({
-    required this.dt,
+  const SysEntity({required this.pod});
+
+  @override
+  List<Object> get props => [pod];
+}
+
+class CityEntity extends Equatable {
+  final int id;
+  final String name;
+  final CoordEntity coord;
+  final String country;
+  final int population;
+  final int timezone;
+  final int sunrise;
+  final int sunset;
+
+  const CityEntity({
+    required this.id,
+    required this.name,
+    required this.coord,
+    required this.country,
+    required this.population,
+    required this.timezone,
     required this.sunrise,
     required this.sunset,
-    required this.moonrise,
-    required this.moonset,
-    required this.moonPhase,
-    required this.summary,
-    required this.temp,
-    required this.feelsLike,
-    required this.pressure,
-    required this.humidity,
-    required this.dewPoint,
-    required this.windSpeed,
-    required this.windDeg,
-    required this.windGust,
-    required this.weather,
-    required this.clouds,
-    required this.pop,
-    required this.rain,
-    required this.uvi,
   });
 
   @override
-  List<Object?> get props => [
-        dt,
-        sunrise,
-        sunset,
-        moonrise,
-        moonset,
-        moonPhase,
-        summary,
-        temp,
-        feelsLike,
-        pressure,
-        humidity,
-        dewPoint,
-        windSpeed,
-        windDeg,
-        windGust,
-        weather,
-        clouds,
-        pop,
-        rain,
-        uvi,
-      ];
+  List<Object> get props =>
+      [id, name, coord, country, population, timezone, sunrise, sunset];
 }
 
-class AlertEntity extends Equatable {
-  final String? senderName;
-  final String? event;
-  final int? start;
-  final int? end;
-  final String? description;
-  final List<String?>? tags;
+class CoordEntity extends Equatable {
+  final double lat;
+  final double lon;
 
-  const AlertEntity({
-    required this.senderName,
-    required this.event,
-    required this.start,
-    required this.end,
-    required this.description,
-    required this.tags,
+  const CoordEntity({
+    required this.lat,
+    required this.lon,
   });
 
   @override
-  List<Object?> get props => [
-        senderName,
-        event,
-        start,
-        end,
-        description,
-        tags,
-      ];
-}
-
-class TempEntity extends Equatable {
-  final double? day;
-  final double? min;
-  final double? max;
-  final double? night;
-  final double? eve;
-  final double? morn;
-
-  const TempEntity({
-    required this.day,
-    required this.min,
-    required this.max,
-    required this.night,
-    required this.eve,
-    required this.morn,
-  });
-
-  @override
-  List<Object?> get props => [
-        day,
-        min,
-        max,
-        night,
-        eve,
-        morn,
-      ];
-}
-
-class FeelsLikeEntity extends Equatable {
-  final double? day;
-  final double? night;
-  final double? eve;
-  final double? morn;
-
-  const FeelsLikeEntity({
-    required this.day,
-    required this.night,
-    required this.eve,
-    required this.morn,
-  });
-
-  @override
-  List<Object?> get props => [
-        day,
-        night,
-        eve,
-        morn,
-      ];
+  List<Object> get props => [lat, lon];
 }

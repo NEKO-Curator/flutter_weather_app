@@ -11,7 +11,6 @@ part 'main_weather_event.dart';
 class MainWeatherBloc extends Bloc<MainWeatherEvent, MainWeatherState> {
   MainWeatherBloc({required this.getWeatherDataByCoordinates})
       : super(const MainWeatherState()) {
-    // on<TicketHomeSearchEvent>(_onSearch);
     on<UpdateWeatherEvent>(_onUpdate);
   }
   final GetWeatherDataByCoordinates getWeatherDataByCoordinates;
@@ -30,22 +29,4 @@ class MainWeatherBloc extends Bloc<MainWeatherEvent, MainWeatherState> {
       emit(state.copyWith(status: MainWeatherStatus.failure));
     }
   }
-  // void _onSearch(TicketHomeSearchEvent event, Emitter<TicketHomeState> emit) {
-  //   emit(state.copyWith(
-  //     status: TicketHomeStatus.loading,
-  //     searchText: event.text,
-  //   ));
-  //   try {
-  //     ticketApiDataSource
-  //         .searchTickets(event.text)
-  //         .then((List<TicketModel> value) {
-  //       emit(state.copyWith(
-  //         status: TicketHomeStatus.loaded,
-  //         searchResults: value,
-  //       ));
-  //     });
-  //   } catch (e) {
-  //     emit(state.copyWith(status: TicketHomeStatus.failure));
-  //   }
-  // }
 }
