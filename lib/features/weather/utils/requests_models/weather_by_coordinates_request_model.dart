@@ -1,5 +1,5 @@
 class WeatherByCoordinatesRequestModel {
-  WeatherByCoordinatesRequestModel({
+  const WeatherByCoordinatesRequestModel({
     this.lat,
     this.lon,
   });
