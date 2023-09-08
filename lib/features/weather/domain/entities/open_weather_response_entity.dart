@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// TODO: Переделать сущность
 class OpenWeatherEntity extends Equatable {
   final double? lat;
   final double? lon;

@@ -7,7 +7,6 @@ import 'package:flutter_weather_app/features/weather/data/models/minutely_model.
 import 'package:flutter_weather_app/features/weather/data/models/open_weather_current_model.dart';
 import 'package:flutter_weather_app/features/weather/domain/entities/open_weather_response_entity.dart';
 
-// TODO: Переделать модель
 class OpenWeatherModel extends OpenWeatherEntity {
   const OpenWeatherModel({
     required lat,
