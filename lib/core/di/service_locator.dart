@@ -26,6 +26,4 @@ setupServiceLocator() async {
             apiKey: serviceLocator<OpenWeatherApiConstants>().apiKey,
             apiBaseUrl: serviceLocator<OpenWeatherApiConstants>().apiBaseUrl,
           ));
-  // serviceLocator.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(
-  //     newsApi: serviceLocator(), apiKey: serviceLocator<Constant>().apiKey));
 }

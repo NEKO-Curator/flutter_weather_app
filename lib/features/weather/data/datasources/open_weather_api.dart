@@ -23,11 +23,6 @@ class OpenWeatherApiImpl implements WeatherRemoteDataSource {
       Uri.parse(
           '$apiBaseUrl/forecast?lat=${weatherByCoordinatesRequestModel?.lat}&lon=${weatherByCoordinatesRequestModel?.lon}&exclude=$exclude&appid=$apiKey&lang=ru'),
     );
-    print(
-      Uri.parse(
-          '$apiBaseUrl/forecast?lat=${weatherByCoordinatesRequestModel?.lat}&lon=${weatherByCoordinatesRequestModel?.lon}&exclude=$exclude&appid=$apiKey&lang=ru'),
-    );
-    print(response.statusCode);
     if (response.statusCode == 200) {
       return OpenWeatherModel.fromJson(jsonDecode(response.body));
     } else {
