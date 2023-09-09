@@ -27,7 +27,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
       //TODO: убрать !
       return result!;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

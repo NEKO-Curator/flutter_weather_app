@@ -20,7 +20,6 @@ final class MainWeatherState extends Equatable {
   }) {
     return MainWeatherState(
       status: status ?? this.status,
-      //TODO:
       coordinatesRequestModel:
           coordinatesRequestModel ?? this.coordinatesRequestModel,
       results: results ?? this.results,

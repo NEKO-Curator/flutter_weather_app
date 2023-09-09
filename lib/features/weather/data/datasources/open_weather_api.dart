@@ -25,6 +25,8 @@ class OpenWeatherApiImpl implements WeatherRemoteDataSource {
     );
     if (response.statusCode == 200) {
       return OpenWeatherModel.fromJson(jsonDecode(response.body));
+    } else if (response.statusCode == 401) {
+      throw Exception(jsonDecode(response.body)['message']);
     } else {
       throw Exception('Failed to load weather data');
     }
