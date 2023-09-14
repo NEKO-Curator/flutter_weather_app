@@ -16,7 +16,8 @@ class _MainWeatherScreenState extends State<MainWeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => serviceLocator<MainWeatherBloc>(),
+      create: (context) =>
+          serviceLocator<MainWeatherBloc>()..add(const UpdateWeatherEvent()),
       child: const WeatherBackgroundWidget(),
     );
   }

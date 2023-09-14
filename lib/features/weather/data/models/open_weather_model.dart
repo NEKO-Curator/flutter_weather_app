@@ -127,10 +127,10 @@ class MainModel extends MainEntity {
         );
   factory MainModel.fromJson(Map<String, dynamic> json) {
     return MainModel(
-      temp: json['temp'] as double,
-      feelsLike: json['feels_like'] as double,
-      tempMin: json['temp_min'] as double,
-      tempMax: json['temp_max'] as double,
+      temp: json['temp'].toDouble(),
+      feelsLike: json['feels_like'].toDouble(),
+      tempMin: json['temp_min'].toDouble(),
+      tempMax: json['temp_max'].toDouble(),
       pressure: json['pressure'] as int,
       seaLevel: json['sea_level'] as int,
       grndLevel: json['grnd_level'] as int,

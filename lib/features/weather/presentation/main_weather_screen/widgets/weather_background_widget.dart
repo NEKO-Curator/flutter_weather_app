@@ -9,6 +9,7 @@ class WeatherBackgroundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MainWeatherBloc, MainWeatherState>(
+      bloc: BlocProvider.of<MainWeatherBloc>(context),
       builder: (context, state) {
         return Stack(
           children: [
@@ -17,9 +18,23 @@ class WeatherBackgroundWidget extends StatelessWidget {
                 WeatherScene.sunset.getWeather(),
               ],
             ),
-            const Center(
-              child: Text("Hello"),
-            ),
+            if (state.status == MainWeatherStatus.loaded)
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('City: ${state.results?.city.name}'),
+                    Text('Temperature: ${state.results?.list[0].main.temp}°C'),
+                    Text('Weather: ${state.results?.list[0].weather[0].main}'),
+                    Text(
+                        'Description: ${state.results?.list[0].weather[0].description}'),
+                    Text(
+                        'Wind Speed: ${state.results?.list[0].wind.speed} m/s'),
+                    Image.network(
+                        'http://openweathermap.org/img/w/${state.results?.list[0].weather[0].icon}.png'), // Icon
+                  ],
+                ),
+              ),
           ],
         );
       },

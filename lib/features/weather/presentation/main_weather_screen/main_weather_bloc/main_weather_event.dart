@@ -7,9 +7,5 @@ sealed class MainWeatherEvent extends Equatable {
 }
 
 final class UpdateWeatherEvent extends MainWeatherEvent {
-  const UpdateWeatherEvent({required this.lon, required this.lat});
-  final double lon;
-  final double lat;
-  @override
-  List<Object?> get props => [lat, lon];
+  const UpdateWeatherEvent();
 }
