@@ -6,6 +6,7 @@ import 'package:flutter_weather_app/features/weather/domain/usecases/get_current
 import 'package:flutter_weather_app/features/weather/domain/usecases/get_weather_data_by_coordinates.dart';
 import 'package:flutter_weather_app/features/weather/domain/usecases/handle_location_permission.dart';
 import 'package:flutter_weather_app/features/weather/utils/requests_models/weather_by_coordinates_request_model.dart';
+import 'package:shake/shake.dart';
 
 part 'main_weather_state.dart';
 part 'main_weather_event.dart';
@@ -16,6 +17,9 @@ class MainWeatherBloc extends Bloc<MainWeatherEvent, MainWeatherState> {
     required this.getCurrentPositionUseCase,
     required this.handleLocationPermissionUseCase,
   }) : super(const MainWeatherState()) {
+    ShakeDetector.autoStart(onPhoneShake: () {
+      add(const UpdateWeatherEvent());
+    });
     on<UpdateWeatherEvent>(_onUpdate);
   }
   final GetWeatherDataByCoordinates getWeatherDataByCoordinates;

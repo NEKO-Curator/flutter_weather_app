@@ -43,6 +43,7 @@ dependencies:
   weather_animation: ^0.0.2
   geolocator: ^10.0.1
   dartz: ^0.10.1
+  shake: ^2.2.0
 
 dev_dependencies:
   flutter_test:
