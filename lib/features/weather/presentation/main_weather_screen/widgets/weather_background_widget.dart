@@ -15,7 +15,7 @@ class WeatherBackgroundWidget extends StatelessWidget {
         if (state.status == MainWeatherStatus.failure) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(state.statusMessage),
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 5),
           ));
         }
       },
@@ -74,12 +74,14 @@ class WeatherBackgroundWidget extends StatelessWidget {
                     const Spacer(),
                     Container(
                       decoration: BoxDecoration(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .tertiaryContainer
-                            .withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(22),
-                      ),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .tertiaryContainer
+                              .withOpacity(0.5),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(22),
+                            topRight: Radius.circular(22),
+                          )),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -107,7 +109,7 @@ class WeatherBackgroundWidget extends StatelessWidget {
                                     itemBuilder: (context, index) {
                                       return Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 16.0),
+                                            horizontal: 12.0),
                                         child: Padding(
                                           padding: const EdgeInsets.all(6.0),
                                           child: Column(
