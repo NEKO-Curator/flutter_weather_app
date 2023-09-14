@@ -1,6 +1,6 @@
 # flutter_weather_app
 
-A new Flutter project.
+Flutter weather app using BLoC, GetIt
 
 ## Getting Started
 
