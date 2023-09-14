@@ -44,6 +44,7 @@ dependencies:
   geolocator: ^10.0.1
   dartz: ^0.10.1
   shake: ^2.2.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

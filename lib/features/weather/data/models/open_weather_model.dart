@@ -64,7 +64,7 @@ class OpenWeatherList extends WeatherDataEntity {
       visibility: json['visibility'] as int,
       pop: json['pop'].toDouble(),
       sys: Sys.fromJson(json['sys'] as Map<String, dynamic>),
-      dtTxt: json['dt_txt'] as String,
+      dtTxt: DateTime.parse(json['dt_txt'].toString()),
     );
   }
 }

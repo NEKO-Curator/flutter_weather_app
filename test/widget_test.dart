@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_weather_app/features/weather/data/datasources/weather_remote_datasource.dart';
 import 'package:flutter_weather_app/features/weather/data/models/open_weather_model.dart';
 import 'package:flutter_weather_app/features/weather/domain/entities/location_entity.dart';
-import 'package:flutter_weather_app/features/weather/utils/requests_models/weather_by_coordinates_request_model.dart';
 import 'package:http/http.dart' as http;
 
 void main() {

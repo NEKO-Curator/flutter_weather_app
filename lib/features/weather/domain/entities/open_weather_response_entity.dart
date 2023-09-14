@@ -29,7 +29,7 @@ class WeatherDataEntity extends Equatable {
   final double pop;
   final RainEntity? rain;
   final SysEntity sys;
-  final String dtTxt;
+  final DateTime dtTxt;
 
   const WeatherDataEntity({
     required this.dt,
