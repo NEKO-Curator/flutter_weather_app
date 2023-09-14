@@ -5,13 +5,13 @@ import 'package:flutter_weather_app/features/weather/data/models/open_weather_mo
 import 'package:flutter_weather_app/features/weather/utils/requests_models/weather_by_coordinates_request_model.dart';
 import 'package:http/http.dart' as http;
 
-class OpenWeatherApiImpl implements WeatherRemoteDataSource {
+class WeatherRemoteDataSourceImpl implements WeatherRemoteDataSource {
   //TODO: убрать http библиотеку
   final http.Client client;
   final String apiKey;
   final String apiBaseUrl;
-
-  OpenWeatherApiImpl(
+  final String units = 'metric';
+  WeatherRemoteDataSourceImpl(
       {required this.client, required this.apiKey, required this.apiBaseUrl});
 
   @override
@@ -21,7 +21,7 @@ class OpenWeatherApiImpl implements WeatherRemoteDataSource {
     const exclude = '';
     final response = await client.get(
       Uri.parse(
-          '$apiBaseUrl/forecast?lat=${weatherByCoordinatesRequestModel?.lat}&lon=${weatherByCoordinatesRequestModel?.lon}&exclude=$exclude&appid=$apiKey&lang=ru'),
+          '$apiBaseUrl/forecast?lat=${weatherByCoordinatesRequestModel?.lat}&lon=${weatherByCoordinatesRequestModel?.lon}&exclude=$exclude&appid=$apiKey&lang=ru&units=$units'),
     );
     if (response.statusCode == 200) {
       return OpenWeatherModel.fromJson(jsonDecode(response.body));
