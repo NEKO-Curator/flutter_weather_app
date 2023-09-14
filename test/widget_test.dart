@@ -5,10 +5,10 @@ import 'package:flutter_weather_app/features/weather/utils/requests_models/weath
 import 'package:http/http.dart' as http;
 
 void main() {
-  late OpenWeatherApiImpl openWeatherApiImpl;
+  late WeatherRemoteDataSourceImpl openWeatherApiImpl;
 
   setUp(() {
-    openWeatherApiImpl = OpenWeatherApiImpl(
+    openWeatherApiImpl = WeatherRemoteDataSourceImpl(
       client: http.Client(),
       apiKey: '4ae5161441b4aaccbc506a0a64fe583a',
       apiBaseUrl: 'https://api.openweathermap.org/data/2.5',
