@@ -25,6 +25,7 @@ class WeatherRemoteDataSourceImpl implements WeatherRemoteDataSource {
       {LocationEntity? locationEntity}) async {
     const exclude = '';
     final response = await client.get(
+      //TODO: add language support
       Uri.parse(
           '$apiBaseUrl/forecast?lat=${locationEntity?.lat}&lon=${locationEntity?.lon}&exclude=$exclude&appid=$apiKey&lang=ru&units=$units'),
     );
