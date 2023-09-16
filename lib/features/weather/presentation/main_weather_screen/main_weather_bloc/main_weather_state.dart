@@ -5,31 +5,25 @@ enum MainWeatherStatus { initial, loading, loaded, failure }
 final class MainWeatherState extends Equatable {
   const MainWeatherState({
     this.status = MainWeatherStatus.initial,
-    this.coordinatesRequestModel =
-        const WeatherByCoordinatesRequestModel(lat: 59.9311, lon: 30.3609),
     this.results,
     this.statusMessage = '',
   });
   final MainWeatherStatus status;
-  final WeatherByCoordinatesRequestModel coordinatesRequestModel;
   final OpenWeatherEntity? results;
   final String statusMessage;
 
   MainWeatherState copyWith({
     MainWeatherStatus? status,
-    WeatherByCoordinatesRequestModel? coordinatesRequestModel,
     OpenWeatherEntity? results,
     String? statusMessage,
   }) {
     return MainWeatherState(
       status: status ?? this.status,
-      coordinatesRequestModel:
-          coordinatesRequestModel ?? this.coordinatesRequestModel,
       results: results ?? this.results,
       statusMessage: statusMessage ?? this.statusMessage,
     );
   }
 
   @override
-  List<Object?> get props => [coordinatesRequestModel, results, status];
+  List<Object?> get props => [results, status];
 }
