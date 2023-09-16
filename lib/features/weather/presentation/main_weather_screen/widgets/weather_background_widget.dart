@@ -18,7 +18,6 @@ class _WeatherBackgroundWidgetState extends State<WeatherBackgroundWidget> {
   @override
   void initState() {
     ShakeDetector.autoStart(onPhoneShake: () {
-      //add(const UpdateWeatherEvent());
       context.read<MainWeatherBloc>().add(const UpdateWeatherEvent());
     });
     super.initState();
@@ -182,7 +181,6 @@ class _WeatherBackgroundWidgetState extends State<WeatherBackgroundWidget> {
   }
 
   WeatherScene weatherScene(String? param) {
-    //Clouds, Clear, Snow, Drizzle, Thunderstorm, Rain
     switch (param) {
       case "Clouds":
         return WeatherScene.sunset;
