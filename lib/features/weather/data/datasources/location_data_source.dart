@@ -11,7 +11,7 @@ class LocationDataSourceImpl extends LocationDataSource {
   Future<LocationModel> getCurrentPosition() async {
     try {
       final position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.medium,
+        desiredAccuracy: LocationAccuracy.bestForNavigation,
       );
 
       return LocationModel.fromPosition(position);
