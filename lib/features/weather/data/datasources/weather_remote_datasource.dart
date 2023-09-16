@@ -13,7 +13,6 @@ abstract class WeatherRemoteDataSource {
 }
 
 class WeatherRemoteDataSourceImpl implements WeatherRemoteDataSource {
-  //TODO: убрать http библиотеку
   final http.Client client;
   final String apiKey;
   final String apiBaseUrl;

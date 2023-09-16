@@ -2,10 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/features/weather/presentation/main_weather_screen/main_weather_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:shake/shake.dart';
 import 'package:weather_animation/weather_animation.dart';
 
-class WeatherBackgroundWidget extends StatelessWidget {
+class WeatherBackgroundWidget extends StatefulWidget {
   const WeatherBackgroundWidget({super.key});
+
+  @override
+  State<WeatherBackgroundWidget> createState() =>
+      _WeatherBackgroundWidgetState();
+}
+
+class _WeatherBackgroundWidgetState extends State<WeatherBackgroundWidget> {
+  late ShakeDetector detector;
+  @override
+  void initState() {
+    ShakeDetector.autoStart(onPhoneShake: () {
+      //add(const UpdateWeatherEvent());
+      context.read<MainWeatherBloc>().add(const UpdateWeatherEvent());
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,6 +173,12 @@ class WeatherBackgroundWidget extends StatelessWidget {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    detector.stopListening();
+    super.dispose();
   }
 
   WeatherScene weatherScene(String? param) {
