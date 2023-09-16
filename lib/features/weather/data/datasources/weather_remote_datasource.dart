@@ -12,6 +12,7 @@ abstract class WeatherRemoteDataSource {
   Future<OpenWeatherModel?> getWeatherDataByCity({String? cityName});
 }
 
+//https://openweathermap.org/forecast5 api docs
 class WeatherRemoteDataSourceImpl implements WeatherRemoteDataSource {
   final http.Client client;
   final String apiKey;
