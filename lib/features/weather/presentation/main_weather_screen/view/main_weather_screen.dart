@@ -5,14 +5,9 @@ import 'package:flutter_weather_app/features/weather/presentation/main_weather_s
 
 import '../widgets/weather_background_widget.dart';
 
-class MainWeatherScreen extends StatefulWidget {
+class MainWeatherScreen extends StatelessWidget {
   const MainWeatherScreen({super.key});
 
-  @override
-  State<MainWeatherScreen> createState() => _MainWeatherScreenState();
-}
-
-class _MainWeatherScreenState extends State<MainWeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

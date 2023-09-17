@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/features/weather/domain/entities/location_entity.dart';
@@ -15,7 +16,7 @@ class MainWeatherBloc extends Bloc<MainWeatherEvent, MainWeatherState> {
     required this.getCurrentPositionUseCase,
     required this.handleLocationPermissionUseCase,
   }) : super(const MainWeatherState()) {
-    on<UpdateWeatherEvent>(_onUpdate);
+    on<UpdateWeatherEvent>(_onUpdate, transformer: droppable());
   }
   final GetWeatherDataByCoordinates getWeatherDataByCoordinates;
   final GetCurrentPositionUseCase getCurrentPositionUseCase;
